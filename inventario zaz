@@ -1,0 +1,197 @@
+#include <iostream>
+#include <stdlib.h>
+#include <conio.h>
+#include <string.h>
+#include <stdio.h>
+#include <vector>
+using namespace std;
+
+int main(){
+	int largo = 100;
+	int o,o2,inventario[100],i=0,cant[100],n=0,baj[100],bajo,retirar,j,m,r,d=0,e;
+	std::string Nombrepro[100],aux;
+	double precio[100],t,p;
+	
+	do{
+		r=0;
+		e=0;
+	    if(d==1){
+			o=4;
+		}else{
+		cout<<"inventario Zaz-quatch Store"<<endl;
+		cout<<"Menu"<<endl<<endl;
+		cout<<"1. ver inventario."<<endl;
+		cout<<"2. Registrar entrada."<<endl;
+		cout<<"3. Registrar salida."<<endl;
+		cout<<"4. Agregar producto"<<endl;
+		cout<<"5. Eliminar producto"<<endl;
+		cout<<"6. salir"<<endl<<endl;
+		cout<<"---------------------------------------------------"<<endl;
+		for(i=0;i<n;i++){
+			if(cant[i]<baj[i]){
+				cout<<"El producto: "<<Nombrepro[i]<<"se encuentra bajo: "<<cant[i]<<endl;
+			}
+				}
+				cout<<"---------------------------------------------------"<<endl<<endl<<endl;
+				cin>>o;
+		}
+		
+		
+		
+		switch(o){
+			case 1:{
+				p=0;
+				for(i=0;i<n;i++){
+					t=cant[i]*precio[i];
+					cout<<"\Nombre del producto:--"<<Nombrepro[i]<<"  cantidad--"<<cant[i]<<"  precio:--"<<precio[i]<<"  precio total:--"<<t<<endl;
+					p=p+t;
+				}
+					cout<<"-----------------------------------------------------------------------"<<endl;
+				    cout<<"suma total> "<<p<<endl;
+				    cout<<"-----------------------------------------------------------------------"<<endl<<endl<<endl;
+				    cout<<"\nIngrese 1 para volver al menu o 0 para salir: "<<endl;
+				    cin>>o2;
+				break;
+			}
+				
+			case 2: {
+			    cout<<"Ingrese el nombre del producto a ingresar en MAYUSCULAS: "<<endl;
+				cin>>aux;
+				for(j=0;j<n;j++){
+					if(aux==Nombrepro[j]){
+						cout<<"la cantidad del producto es es: "<<endl;
+						cout<<cant[j]<<endl;
+						cout<<"ingrese cantidad a agregar"<<endl;
+						int aux2=0;
+						cin>>aux2;
+						cant[j]=cant[j]+aux2;
+						cout<<"la nueva cantidad del producto es es: "<<endl;
+						cout<<cant[j]<<endl;
+						cout<<"\nIngrese 1 para volver al menu o 0 para salir: "<<endl;
+				        cin>>o2;
+						e=1;
+					}
+			} 
+				
+				if(j==n;e==0){
+					
+						cout<<"el producto no se encuentra registrado."<<endl;
+						cout<<"ir al registro de productos?"<<endl;
+						cout<<"1.si, 0.no"<<endl;
+						cin>>r;
+						if(r==1){
+				            d=1;
+				            o2=1;
+							
+						}else{
+							cout<<"\nIngrese 1 para volver al menu o 0 para salir: "<<endl;
+				            cin>>o2;
+						}		
+						}
+		}break;
+			case 3: {
+				cout<<"Ingrese el nombre del producto a retirar en MAYUSCULAS: "<<endl;
+				cin>>aux;
+				for(j=0;j<n;j++){
+					if(aux==Nombrepro[j]){
+						cout<<"la cantidad del producto es es: "<<endl;
+						cout<<cant[j]<<endl;cout<<"ingrese cantidad a retirar"<<endl;
+						cin>>retirar;
+						
+					if(retirar<=cant[j]){
+						cant[j]=cant[j]-retirar;
+						cout<<"la nueva cantidad del producto es es: "<<endl;
+						cout<<cant[j]<<endl;
+						cout<<"\nIngrese 1 para volver al menu o 0 para salir: "<<endl;
+				        cin>>o2;
+				        break;
+					}else{
+						cout<<"el producto no posee la cantidad para retirar"<<endl;
+						cout<<cant[j]<<endl;cout<<"\nIngrese 1 para volver al menu o 0 para salir: "<<endl;
+				        cin>>o2;
+				        break; 
+					}
+				}
+			}break;
+					
+			} 
+			    
+			case 4: {
+					if(d==1){
+					Nombrepro[j]=aux;
+					cout<<"ingrese cantidad del producto"<<endl;
+					cin>>cant[j];
+					cout<<"cuando se consideraria que el producto sea bajo"<<endl;
+					cin>>baj[j];
+					cout<<"ingrese precio del producto"<<endl;
+					cin>>precio[j];
+					cout<<"\nIngrese 1 para volver al menu o 0 para salir: "<<endl;
+				    cin>>o2;
+				    n=n+1;
+				    d=0;
+				    break;
+				}
+				else{
+				for(j=0;j<101;j++){
+					if(j==n){
+					cout<<"Ingrese el nombre del producto a agregar en MAYUSCULAS: "<<endl;
+				    cin>>Nombrepro[j];
+					cout<<"ingrese cantidad del producto"<<endl;
+					cin>>cant[j];
+					cout<<"cuando se consideraria que el producto sea bajo"<<endl;
+					cin>>baj[j];
+					cout<<"ingrese precio del producto"<<endl;
+					cin>>precio[j];
+					cout<<"\nIngrese 1 para volver al menu o 0 para salir: "<<endl;
+				    cin>>o2;		
+				}
+				}
+				n=n+1;
+				}
+				break;
+			}
+				
+		
+			
+			case 5: {
+				cout<<"Ingrese el nombre del producto a eliminar en MAYUSCULAS: "<<endl;
+				cin>>aux;
+				for(j=0;j<n;j++){
+					if(aux==Nombrepro[j]){
+						cout<<"eliminar el producto: "<<Nombrepro[j]<<"?"<<endl;
+						cin>>r;
+					if(r==1){
+						for(i=j;i<n;i++)	{
+							Nombrepro[i]=Nombrepro[i+1];	
+							cant[i]=cant[i+1];
+							baj[i]=baj[i+1];
+							precio[i]=precio[i+1];	
+						}
+		}
+				      cout<<"\nIngrese 1 para volver al menu o 0 para salir: "<<endl;
+				            cin>>o2;
+						n=n-1;	
+					}	
+					}
+					
+				if(j==n){
+						cout<<"el producto no se encuentra registrado."<<endl;
+						cout<<"\nIngrese 1 para volver al menu o 0 para salir: "<<endl;
+				            cin>>o2;		
+						}
+						break;
+					}
+			
+			case 6: {
+				cout<<"\ndesea salir: 1.no, 0.si"<<endl;
+				cin>>o2;
+				break;
+			}
+			default :{cout<<"no valido"<<endl;
+			cout<<"\ndesea salir: 1.no, 0.si"<<endl;
+				cin>>o2;
+			break;
+			}
+		}
+			}while(o2==1);
+}
